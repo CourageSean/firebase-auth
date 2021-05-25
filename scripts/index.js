@@ -1,4 +1,6 @@
 const guideList = document.querySelector('.guides');
+const loggedOutLinks = document.querySelectorAll('.logged-out');
+const loggedInLinks = document.querySelectorAll('.logged-in');
 
 // setup guides
 const setupGuides = (data) => {
@@ -29,3 +31,15 @@ document.addEventListener('DOMContentLoaded', function () {
   var items = document.querySelectorAll('.collapsible');
   M.Collapsible.init(items);
 });
+
+// setup UI
+const setupUI = (user) => {
+  if (user) {
+    // toggle UI elements
+    loggedInLinks.forEach((item) => (item.style.display = 'block'));
+    loggedOutLinks.forEach((item) => (item.style.display = 'none'));
+  } else {
+    loggedInLinks.forEach((item) => (item.style.display = 'none'));
+    loggedOutLinks.forEach((item) => (item.style.display = 'block'));
+  }
+};
